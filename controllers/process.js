@@ -22,7 +22,7 @@ const createProcess = asyncHandler(async (req, res) => {
 });
 const getProcess = asyncHandler(async (req, res) => {
   let { id } = req.params;
-  const process = await Process.findAll({
+  const process = await Process.findOne({
     where: { processId: id, user_id: req.user.userId },
   });
   res.status(200).json(process);

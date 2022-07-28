@@ -20,6 +20,10 @@ const register = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Password souldn't be greater than 6 charatcters !");
   }
+  if (username && /\s/.test(username)) {
+    res.status(400);
+    throw new Error("Username shouldn't have any whitespace!");
+  }
 
   //hash password
   const salt = await bcrypt.genSalt(10);
